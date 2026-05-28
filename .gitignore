@@ -1,0 +1,66 @@
+# =========================
+# OS / Editor
+# =========================
+
+.DS_Store
+*.swp
+*.log
+
+.idea/
+.vscode/
+
+# =========================
+# Dart / Flutter
+# =========================
+
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub/
+.pub-cache/
+build/
+coverage/
+
+# Flutter generated docs
+**/doc/api/
+
+# Flutter iOS
+**/ios/Flutter/.last_build_id
+ios/Pods/
+
+# Android build
+android/.gradle/
+android/app/debug
+android/app/profile
+android/app/release
+
+# =========================
+# Env files
+# =========================
+
+env/dev.json
+env/staging.json
+env/prod.json
+
+# =========================
+# Secrets / Signing
+# =========================
+
+*.jks
+*.keystore
+key.properties
+
+# Firebase
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# =========================
+# Misc
+# =========================
+
+*.class
+*.pyc
+.history
+.svn/
+.atom/
+.swiftpm/
