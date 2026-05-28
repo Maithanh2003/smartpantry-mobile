@@ -1,3 +1,7 @@
+/// Runtime config from `--dart-define-from-file` (see `env/*.json`, `env/README.md`).
+///
+/// Never hardcode API URLs in Dart — use Docker Compose `DART_DEFINE_ENV_FILE` or
+/// `flutter run --dart-define-from-file=env/local.json`.
 class Env {
   static const String appEnv = String.fromEnvironment(
     'APP_ENV',

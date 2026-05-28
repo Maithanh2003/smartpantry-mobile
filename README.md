@@ -1,17 +1,25 @@
 # smartpantry_mobile
 
-A new Flutter project.
+Flutter client for SmartPantry.
 
-## Getting Started
+## Quick start
 
-This project is a starting point for a Flutter application.
+```powershell
+.\scripts\setup-env.ps1
+flutter pub get
+flutter run --dart-define-from-file=env/local.json
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Docker (local / staging / production)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Same philosophy as `smartpantry-backend` — env templates + compose per environment.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Environment | Compose |
+|-------------|---------|
+| Local dev (hot reload, web) | `docker compose up --build` |
+| Staging | `docker compose -f docker-compose.staging.yml up -d --build` |
+| Production | `docker compose -f docker-compose.prod.yml up -d --build` |
+
+See [docs/docker-environments.md](docs/docker-environments.md) and [env/README.md](env/README.md).
+
+Phase A foundation: [README_PHASE_A.md](README_PHASE_A.md).

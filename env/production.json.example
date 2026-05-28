@@ -1,0 +1,5 @@
+{
+  "APP_ENV": "prod",
+  "API_BASE_URL": "https://api.yourdomain.com",
+  "API_PREFIX": "/api/v1"
+}

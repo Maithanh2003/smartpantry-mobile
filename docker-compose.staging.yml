@@ -1,0 +1,17 @@
+# Staging — build Flutter web release with staging dart-defines, serve via nginx.
+# Copy env/staging.json from env/staging.json.example before build.
+#
+#   docker compose -f docker-compose.staging.yml up -d --build
+#   Open http://127.0.0.1:8081
+
+services:
+  flutter-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DART_DEFINE_ENV_FILE: ${DART_DEFINE_ENV_FILE:-env/staging.json}
+    container_name: smartpantry-flutter-staging
+    ports:
+      - "${FLUTTER_WEB_PORT:-8081}:80"
+    restart: unless-stopped

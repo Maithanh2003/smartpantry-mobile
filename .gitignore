@@ -1,66 +1,142 @@
-# =========================
-# OS / Editor
-# =========================
+# =============================================================================
+# SmartPantry Mobile — do not commit secrets, local env, or build artifacts
+# Commit only: source, pubspec.lock, env/*.example, env/README.md
+# =============================================================================
 
+# --- OS ---
 .DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
 *.swp
+*~
+
+# --- Logs & crash dumps ---
 *.log
+logs/
+crash_reports/
 
+# --- IDEs ---
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json.example
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+.history/
+.atom/
+.cursor/
 
-# =========================
-# Dart / Flutter
-# =========================
-
+# --- Flutter / Dart ---
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-.pub/
+.packages
 .pub-cache/
+.pub/
 build/
 coverage/
-
-# Flutter generated docs
 **/doc/api/
+*.dart.js
+*.dart.js_
+*.info.json
+*.js_
+*.js.deps
+*.js.map
 
-# Flutter iOS
-**/ios/Flutter/.last_build_id
-ios/Pods/
+# Symbol / obfuscation outputs
+app.*.symbols
+app.*.map.json
 
-# Android build
-android/.gradle/
-android/app/debug
-android/app/profile
-android/app/release
+# --- Environment & config (sensitive / machine-specific) ---
+# Dotenv-style (if added later)
+.env
+.env.*
+!.env.example
 
-# =========================
-# Env files
-# =========================
+# dart-define JSON — copy from *.example via scripts/setup-env.ps1
+env/**/*.json
+!env/**/*.example
 
-env/dev.json
+# Local overrides / ad-hoc env files
+env/local.json
+env/local.android.json
+env/docker.dev.json
 env/staging.json
 env/prod.json
+env/dev.json
+*.local.json
+secrets/
+credentials/
+**/secrets.json
+**/credentials.json
 
-# =========================
-# Secrets / Signing
-# =========================
+# API keys & tokens (never commit)
+**/api_keys.json
+**/apikeys.json
+**/*_secret.json
+**/*_secrets.json
+*.pem
+*.p12
+*.pfx
+*.key
+*.crt
+*.cer
+*.mobileprovision
+*.provisionprofile
 
-*.jks
-*.keystore
-key.properties
+# --- Android signing & local Gradle ---
+**/android/key.properties
+**/android/local.properties
+**/android/**/google-services.json
+android/.gradle/
+android/captures/
+android/app/debug/
+android/app/profile/
+android/app/release/
+**/android/**/GeneratedPluginRegistrant.java
 
-# Firebase
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
+# --- iOS signing & Firebase ---
+**/ios/Runner/GoogleService-Info.plist
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/ephemeral/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/**/xcuserdata/
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.perspectivev3
+**/ios/**/DerivedData/
+**/ios/**/project.xcworkspace/xcuserdata/
 
-# =========================
-# Misc
-# =========================
+# --- macOS desktop embed (if enabled) ---
+**/macos/Flutter/ephemeral/
+**/macos/Pods/
 
+# --- Windows / Linux desktop embed ---
+**/windows/flutter/ephemeral/
+**/linux/flutter/ephemeral/
+
+# --- Fastlane (if used) ---
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots/
+**/fastlane/test_output/
+
+# --- Docker local overrides (optional secrets in compose) ---
+docker-compose.override.yml
+docker-compose.*.local.yml
+*.override.yml
+
+# --- Misc ---
 *.class
 *.pyc
-.history
 .svn/
-.atom/
 .swiftpm/
+migrate_working_dir/

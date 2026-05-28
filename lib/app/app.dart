@@ -4,15 +4,17 @@ import 'router/app_router.dart';
 import 'theme/app_theme.dart';
 
 class SmartPantryApp extends StatelessWidget {
-  const SmartPantryApp({super.key});
+  SmartPantryApp({super.key});
+
+  final _router = AppRouter.create();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'SmartPantry',
-      theme: AppTheme.light(),
-      onGenerateRoute: AppRouter.routes(),
-      initialRoute: '/',
+      theme: AppTheme.dark(),
+      routerConfig: _router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

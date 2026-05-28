@@ -1,0 +1,17 @@
+# Local development: Flutter web + hot reload (mount source as volume in compose).
+FROM ghcr.io/cirruslabs/flutter:stable
+
+WORKDIR /app
+
+RUN flutter config --enable-web
+
+COPY pubspec.yaml pubspec.lock ./
+RUN flutter pub get
+
+COPY . .
+
+RUN chmod +x docker/entrypoint.dev.sh
+
+EXPOSE 8080
+
+ENTRYPOINT ["docker/entrypoint.dev.sh"]

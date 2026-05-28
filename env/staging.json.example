@@ -1,0 +1,5 @@
+{
+  "APP_ENV": "staging",
+  "API_BASE_URL": "https://mysmartpantry.duns.org",
+  "API_PREFIX": "/api/v1"
+}

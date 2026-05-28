@@ -1,0 +1,27 @@
+# Local dev — Flutter web with hot reload (same philosophy as backend docker-compose.yml).
+# Prerequisite: copy env files from *.example (see env/README.md).
+# Backend API should be reachable at API_BASE_URL in env/docker.dev.json (default http://127.0.0.1:8000).
+#
+#   docker compose up --build
+#   Open http://127.0.0.1:8080
+
+services:
+  flutter-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: smartpantry-flutter-dev
+    ports:
+      - "${FLUTTER_WEB_PORT:-8080}:8080"
+    volumes:
+      - .:/app
+      - flutter_pub_cache:/root/.pub-cache
+    environment:
+      TZ: UTC
+      # dart-define JSON injected at runtime (not hardcoded in Dart source).
+      DART_DEFINE_ENV_FILE: ${DART_DEFINE_ENV_FILE:-env/docker.dev.json}
+    stdin_open: true
+    tty: true
+
+volumes:
+  flutter_pub_cache:
